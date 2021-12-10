@@ -3,14 +3,14 @@ const navMenu = document.getElementById("nav-menu"),
     navClose = document.getElementById("nav-close");
 
 
-// show menu
+// show menu ---------------------------------------
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show_menu')
     })
 }
 
-// hide menu
+// hide menu ---------------------------------------
 if (navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show_menu')
@@ -27,7 +27,7 @@ const linkAction = () => {
 navLink.forEach(n => n.addEventListener("click", linkAction))
 
 
-// scroll header
+// scroll header ---------------------------------------
 
 const scrollAction = () => {
     const header = document.getElementById("header");
@@ -42,7 +42,7 @@ const scrollAction = () => {
 
 window.addEventListener("scroll", scrollAction);
 
-// SWIPPER JS ------------------------------------------------------
+// swiper js ---------------------------------------
 
 var swiper = new Swiper(".discover_container", {
     effect: "coverflow",
@@ -55,3 +55,34 @@ var swiper = new Swiper(".discover_container", {
       rotate: 0,
     },
   });
+
+
+  // video ---------------------------------------
+
+const videoFile = document.getElementById('video-file'),
+      videoIcon = document.getElementById('video-icon'),
+      videoButton = document.getElementById('video-button');
+
+const playPause = () => {
+    if (videoFile.paused) {
+        // play
+        videoFile.play()
+        // change icon
+        videoIcon.classList.add("ri-pause-circle-fill");
+        videoIcon.classList.remove("ri-play-circle-line")
+    } else {
+        // pause
+        videoFile.pause()
+        // change icon
+        videoIcon.classList.remove("ri-pause-circle-fill");
+        videoIcon.classList.add("ri-play-circle-line")
+    }
+}
+
+const videoEnd = () => {
+    videoIcon.classList.remove("ri-pause-circle-fill");
+    videoIcon.classList.add("ri-play-circle-line")
+}
+
+videoButton.addEventListener("click", playPause);
+videoFile.addEventListener("ended", videoEnd);

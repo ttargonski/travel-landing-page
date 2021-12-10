@@ -55,6 +55,8 @@
   --img-transition: .3s;
   --img-hidden: hidden;
   --img-scale: scale(1.1);
+
+  --play-button-width: 3.5rem;
 }
 
 @media screen and (min-width: 968px) {
@@ -120,6 +122,7 @@ a {
 img, video {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 button, input {
@@ -488,6 +491,7 @@ input {
 .experience_img-one, 
 .experience_img-two {
   transition: var(--img-transition);
+  display: block;
 }
 
 .experience_img-one:hover, 
@@ -496,8 +500,10 @@ input {
 }
 
 
-.experience__overlay {
+.experience_overlay {
     overflow: var(--img-hidden);
+    box-shadow: 0px 0px 100px 0px rgba(1, 106, 104, 0.5);
+
 }
   
 .experience_overlay:nth-child(1) {
@@ -506,8 +512,109 @@ input {
 }
 
 .experience_overlay:nth-child(2) {
-    width: 150px;
+    width: 180px;
     position: absolute;
-    top: 5rem;
-    right: -1rem;
+    top: 3rem;
+    right: 0;
+}
+
+/* VIDEO */
+
+.video_description {
+    text-align: center;
+    padding-bottom: var(--mb-2-5);
+}
+
+.video_content {
+    position: relative;
+}
+
+.video_button {
+    display: block;
+    position: absolute;
+    width: var(--play-button-width);
+    height: var(--play-button-width);
+    bottom: -1.5rem;
+    right: calc(50% - (var(--play-button-width)/2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* PlACE */
+
+.place_card {
+    height: 330px;
+    overflow: var(--img-hidden);
+    position: relative;
+} 
+
+.place_container {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+}
+
+
+.place_content, .place_img-gradient {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+
+.place_img {
+    z-index: -1;
+    height: 100%;
+    transition: var(--img-transition);
+    cursor: pointer;
+}
+
+
+.place_card:hover .place_img {
+    transform: var(--img-scale);
+}
+
+.place_img-gradient {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%);
+}
+
+.place_content{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.place_title, .place_content  {
+    color: var(--white-color);
+}
+
+.place_rating {
+    text-align: right;
+}
+
+.place_title {
+    font-size: var(--h2-font-size);
+    display: block;
+}
+
+.place_subtitle {
+    display: block;
+    margin-bottom: var(--mb-0-75);
+}
+
+.place_price {
+    display: block;
+    font-weight: var(--font-medium);
+}
+
+.place_button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: transparent;
 }
